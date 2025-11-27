@@ -151,3 +151,71 @@ def shortest_paths_route():
     logging.error('An unexpected error occurred while inserting result: {0}'.format(e))
 
   return jsonify(response)
+
+
+@app.route('/api', methods=['POST'])
+def api_route():
+  """API endpoint which returns the shortest route between two Wikipedia pages.
+
+    Request body (JSON):
+      source: The title of the start page.
+      target: The title of the goal page.
+
+    Returns:
+      dict: A JSON-ified dictionary containing:
+        - source: The resolved source page title
+        - target: The resolved target page title
+        - route: A list of page titles representing the shortest path from source to target
+
+    Raises:
+      InvalidRequest: If either of the provided titles correspond to pages which do not exist.
+  """
+  # Validate request body
+  try:
+    json_data = request.get_json(force=True)
+  except Exception:
+    raise InvalidRequest('リクエストボディがありません。JSON形式でsourceとtargetを指定してください。')
+
+  if not json_data:
+    raise InvalidRequest('リクエストボディがありません。JSON形式でsourceとtargetを指定してください。')
+
+  if 'source' not in json_data:
+    raise InvalidRequest('sourceパラメータが必要です。')
+
+  if 'target' not in json_data:
+    raise InvalidRequest('targetパラメータが必要です。')
+
+  # Look up the IDs for each page.
+  try:
+    (source_page_id, source_page_title, _) = database.fetch_page(json_data['source'])
+  except ValueError:
+    raise InvalidRequest(
+        '開始ページ「{0}」は存在しません。別の検索をお試しください。'.format(json_data['source']))
+
+  try:
+    (target_page_id, target_page_title, _) = database.fetch_page(json_data['target'])
+  except ValueError:
+    raise InvalidRequest(
+        '終了ページ「{0}」は存在しません。別の検索をお試しください。'.format(json_data['target']))
+
+  # Compute the shortest paths.
+  paths = database.compute_shortest_paths(source_page_id, target_page_id)
+
+  # Build the response
+  response = {
+      'source': source_page_title,
+      'target': target_page_title,
+  }
+
+  if len(paths) == 0:
+    response['route'] = []
+  else:
+    # Get the first (shortest) path and convert page IDs to titles
+    first_path = paths[0]
+    route = []
+    for page_id in first_path:
+      page_title = database.fetch_page_title(page_id)
+      route.append(page_title)
+    response['route'] = route
+
+  return jsonify(response)

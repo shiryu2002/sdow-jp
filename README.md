@@ -17,6 +17,57 @@ encyclopedia.
 - [Miscellaneous](./docs/miscellaneous.md) - A collection of interesting searches and edge case
   page titles.
 
+## API
+
+### Route Search API
+
+ウェブサイトとは別に、記事間のルート検索をAPIとして利用できます。
+
+**Endpoint:** `POST /api`
+
+**Request Body (JSON):**
+
+| パラメータ | 型 | 説明 |
+|------------|------|------|
+| `source` | string | 検索開始記事のタイトル |
+| `target` | string | 検索終了記事のタイトル |
+
+**Response (JSON):**
+
+| フィールド | 型 | 説明 |
+|------------|------|------|
+| `source` | string | 開始記事のタイトル（リダイレクト解決済み） |
+| `target` | string | 終了記事のタイトル（リダイレクト解決済み） |
+| `route` | array | 開始から終了までの記事タイトルのリスト |
+
+**Example Request:**
+
+```bash
+curl -X POST http://localhost:5000/api \
+  -H "Content-Type: application/json" \
+  -d '{"source": "日本", "target": "アメリカ合衆国"}'
+```
+
+**Example Response:**
+
+```json
+{
+  "source": "日本",
+  "target": "アメリカ合衆国",
+  "route": ["日本", "太平洋", "アメリカ合衆国"]
+}
+```
+
+**Error Response:**
+
+ページが存在しない場合:
+
+```json
+{
+  "error": "開始ページ「存在しない記事」は存在しません。別の検索をお試しください。"
+}
+```
+
 ## Blog
 
 - [Insights On Hitler And More From The First 500,000
