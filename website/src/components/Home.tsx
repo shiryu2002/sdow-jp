@@ -191,13 +191,13 @@ export const Home: React.FC = () => {
         // FLASK_DEBUG environment variable is set to 1 and there is a 5xx server error (see
         // https://github.com/corydolphin/flask-cors/issues/67 for details).
         setErrorMessage(
-          'Whoops... Six Degrees of Wikipedia is temporarily unavailable. Please try again in a few seconds.'
+          '申し訳ありません... ウィキペディアの6次の隔たりは一時的に利用できません。数秒後にもう一度お試しください。'
         );
       } else {
         // This can happen when there is a 4xx or 5xx error (except for the case noted in the
         // comment above).
         const defaultErrorMessage =
-          'Whoops... something is broken and has been reported. In the mean time, please try a different search.';
+          '申し訳ありません... 問題が発生しました。別の検索をお試しください。';
 
         setErrorMessage((error as Error).message || defaultErrorMessage);
       }
@@ -231,28 +231,24 @@ export const Home: React.FC = () => {
 
       <Modal isOpen={showModal} onRequestClose={handleCloseModal}>
         <p>
-          Inspired by the concept of{' '}
-          <a href="https://en.wikipedia.org/wiki/Six_degrees_of_separation">
-            six degrees of separation
+          <a href="https://ja.wikipedia.org/wiki/%E5%85%AD%E6%AC%A1%E3%81%AE%E9%9A%94%E3%81%9F%E3%82%8A">
+            六次の隔たり
           </a>
-          , <b>Six Degrees of Wikipedia</b> traverses hyperlinks on Wikipedia to find the least
-          number of clicks it takes to navigate between any of the nearly six million pages on the
-          world's largest free online encyclopedia.
+          のコンセプトに着想を得た<b>ウィキペディアの6次の隔たり</b>
+          は、ウィキペディア上のハイパーリンクをたどり、世界最大のオンライン百科事典の数百万ページ間を移動するのに必要な最短クリック数を見つけます。
         </p>
         <p>
-          Enter the titles of two Wikipedia pages in the boxes on this site, click the "Go!" button,
-          and discover just how connected Wikipedia really is.
+          2つのウィキペディアのページ名をこのサイトの入力欄に入力し、「検索」ボタンをクリックして、ウィキペディアがどれほど繋がっているかを発見してください。
         </p>
         <p>
-          Wikipedia is a registered trademark of the Wikimedia Foundation. This site is made by a
-          fan with no affiliation to that organization.
+          ウィキペディアはウィキメディア財団の登録商標です。このサイトはファンが作成したもので、ウィキメディア財団とは一切関係ありません。
         </p>
         <p>
-          A project by <a href="https://jwn.gr/">Jacob Wenger</a>.
+          <a href="https://jwn.gr/">Jacob Wenger</a>によるプロジェクト。
         </p>
       </Modal>
 
-      <P>Find the shortest paths from</P>
+      <P>最短経路を探す</P>
       <InputFlexContainer>
         <PageInput
           title={sourcePageTitle}
@@ -288,7 +284,7 @@ export const Home: React.FC = () => {
             await handleFetchShortestPaths();
           }}
         >
-          Go!
+          検索
         </SearchButtonWrapper>
       )}
 

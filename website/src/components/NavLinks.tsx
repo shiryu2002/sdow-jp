@@ -74,9 +74,9 @@ export const NavLinks: React.FC<{readonly handleOpenModal: () => void}> = ({hand
   return (
     <Wrapper>
       <TextLink href="#" onClick={() => handleOpenModal()}>
-        About
+        このサイトについて
       </TextLink>
-      <TextLinkInternal to="/blog">Blog</TextLinkInternal>
+      <TextLinkInternal to="/blog">ブログ</TextLinkInternal>
       <TextLink href="https://github.com/jwngr/sdow">GitHub</TextLink>
     </Wrapper>
   );

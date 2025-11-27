@@ -79,12 +79,12 @@ const BlogPostCard: React.FC<{
 
 export const Blog: React.FC = () => (
   <>
-    <title>Blog | Six Degrees of Wikipedia</title>
+    <title>ブログ | ウィキペディアの6次の隔たり</title>
 
     <Logo />
 
     <Wrapper>
-      <Title>A blog about building, maintaining, and promoting Six Degrees of Wikipedia</Title>
+      <Title>ウィキペディアの6次の隔たりの構築、保守、宣伝に関するブログ</Title>
 
       <Divider />
       {BLOG_POSTS.map((postInfo) => (

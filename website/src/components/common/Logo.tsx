@@ -27,7 +27,7 @@ export const Logo: React.FC<{readonly onClick?: () => void}> = ({onClick}) => (
       srcSet={`${logo} 462w, ${logo2x} 924w`}
       sizes="(max-width: 600px) 280px, 800px"
       src={logo2x}
-      alt="Six Degrees of Wikipedia Logo"
+      alt="ウィキペディアの6次の隔たりロゴ"
     />
   </Link>
 );

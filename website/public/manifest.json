@@ -1,6 +1,6 @@
 {
-  "short_name": "SDOW",
-  "name": "Six Degrees of Wikipedia",
+  "short_name": "ウィキペディアの6次",
+  "name": "ウィキペディアの6次の隔たり",
   "icons": [
     {
       "src": "favicon-16x16.png",

@@ -135,14 +135,13 @@ const GraphLegend: React.FC<{
 }> = ({paths, color}) => {
   const labels = map(range(0, paths[0].length), (i) => {
     if (i === 0 && paths[0].length === 1) {
-      return 'Start / end page';
+      return '開始/終了ページ';
     } else if (i === 0) {
-      return 'Start page';
+      return '開始ページ';
     } else if (i === paths[0].length - 1) {
-      return 'End page';
+      return '終了ページ';
     } else {
-      const degreeOrDegrees = i === 1 ? 'degree' : 'degrees';
-      return `${i} ${degreeOrDegrees} away`;
+      return `${i}次の隔たり`;
     }
   });
 
@@ -392,8 +391,8 @@ export const ResultsGraph: React.FC<{
       <GraphLegend paths={paths} color={color} />
 
       <Instructions>
-        <p>Drag to pan. Scroll to zoom.</p>
-        <p>Click node to open Wikipedia page.</p>
+        <p>ドラッグで移動。スクロールで拡大縮小。</p>
+        <p>ノードをクリックでウィキペディアページを開く。</p>
       </Instructions>
 
       <ResetButton onClick={resetGraph}>
