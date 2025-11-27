@@ -50,7 +50,7 @@ def unhandled_exception_handler(error):
   }, stack_info=True)
 
   return jsonify({
-      'error': 'An unexpected internal server error occurred. Please try again.'
+      'error': '予期しない内部サーバーエラーが発生しました。もう一度お試しください。'
   }), 500
 
 
@@ -60,7 +60,7 @@ def route_not_found_handler(error):
   '''Route not found handler.'''
   logging.debug('Route not found: {0} {1}'.format(request.method, request.path))
   return jsonify({
-      'error': 'Route not found: {0} {1}'.format(request.method, request.path)
+      'error': 'ルートが見つかりません: {0} {1}'.format(request.method, request.path)
   }), 404
 
 
@@ -103,14 +103,14 @@ def shortest_paths_route():
      is_source_redirected) = database.fetch_page(request.json['source'])
   except ValueError:
     raise InvalidRequest(
-        'Start page "{0}" does not exist. Please try another search.'.format(request.json['source']))
+        '開始ページ「{0}」は存在しません。別の検索をお試しください。'.format(request.json['source']))
 
   try:
     (target_page_id, target_page_title,
      is_target_redirected) = database.fetch_page(request.json['target'])
   except ValueError:
     raise InvalidRequest(
-        'End page "{0}" does not exist. Please try another search.'.format(request.json['target']))
+        '終了ページ「{0}」は存在しません。別の検索をお試しください。'.format(request.json['target']))
 
   # Compute the shortest paths.
   paths = database.compute_shortest_paths(source_page_id, target_page_id)

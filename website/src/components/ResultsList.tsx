@@ -184,10 +184,9 @@ export const ResultsList: React.FC<{
 
   return (
     <>
-      <ResultsListHeader>Individual paths</ResultsListHeader>
+      <ResultsListHeader>個別の経路</ResultsListHeader>
       <ResultsListSubHeader>
-        Showing {Math.min(paths.length, maxResultsToDisplay)} of {paths.length} result
-        {paths.length !== 1 ? 's' : ''}
+        {paths.length}件中{Math.min(paths.length, maxResultsToDisplay)}件を表示中
       </ResultsListSubHeader>
       <LazyLoadWrapper fallback={null}>
         <ResultsListWrapper>
@@ -198,7 +197,7 @@ export const ResultsList: React.FC<{
       </LazyLoadWrapper>
       {hasMorePaths && (
         <LoadMoreButton onClick={handleLoadMore}>
-          Load {Math.min(numHiddenPaths, RESULT_BATCH_LOAD_SIZE)} more results
+          さらに{Math.min(numHiddenPaths, RESULT_BATCH_LOAD_SIZE)}件を読み込む
         </LoadMoreButton>
       )}
     </>

@@ -3,10 +3,9 @@ import {BlogPostInfo} from '../../../types';
 export const BLOG_POSTS: readonly BlogPostInfo[] = [
   {
     id: 'search-results-analysis',
-    title: 'Insights On Hitler And More From The First 500,000 Searches',
-    date: 'March 14, 2018',
+    title: '最初の50万回の検索から得られたヒトラーなどに関する洞察',
+    date: '2018年3月14日',
     author: 'Jacob Wenger',
-    description:
-      'Delightful, curious, and amusing insights from the first 500,000 searches on Six Degrees of Wikipedia.',
+    description: 'ウィキペディアの6次の隔たりでの最初の50万回の検索から得られた興味深い洞察。',
   },
 ];

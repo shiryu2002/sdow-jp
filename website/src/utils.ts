@@ -4,7 +4,7 @@ import pageTitles from './resources/pageTitles.json';
 import wikipediaFacts from './resources/wikipediaFacts.json';
 
 export const getWikipediaPageUrl = (pageTitle: string): string => {
-  const baseUrl = 'https://en.wikipedia.org/wiki/';
+  const baseUrl = 'https://ja.wikipedia.org/wiki/';
   const sanitizedPageTitle = pageTitle.replace(/ /g, '_');
   return `${baseUrl}${encodeURIComponent(sanitizedPageTitle)}`;
 };

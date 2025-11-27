@@ -156,7 +156,7 @@ export const PageInput: React.FC<{
       });
       setSuggestions(filter(newSuggestions));
     } catch (error) {
-      const defaultErrorMessage = 'Failed to fetch page suggestions from Wikipedia API.';
+      const defaultErrorMessage = 'ウィキペディアAPIからのページ候補の取得に失敗しました。';
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (window as any).ga('send', 'exception', {
         exDescription: get(error, 'response.data.error', defaultErrorMessage),

@@ -91,10 +91,9 @@ export const NewsletterSignupForm: React.FC = () => {
   return (
     <Wrapper>
       <Intro>
-        <p>Enjoy this content?</p>
+        <p>このコンテンツはお楽しみいただけましたか？</p>
         <p>
-          Subscribe to my low-volume newsletter to get notified when a new post is published or when
-          I release content from one of my other projects.
+          新しい投稿が公開されたときや、他のプロジェクトからコンテンツをリリースしたときに通知を受け取るには、ニュースレターを購読してください。
         </p>
       </Intro>
 
@@ -109,7 +108,7 @@ export const NewsletterSignupForm: React.FC = () => {
         <FormInput
           type="email"
           name="EMAIL"
-          placeholder="Email"
+          placeholder="メールアドレス"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -117,7 +116,7 @@ export const NewsletterSignupForm: React.FC = () => {
         <FormInput
           type="text"
           name="FNAME"
-          placeholder="First name"
+          placeholder="名前"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
         />
@@ -131,7 +130,7 @@ export const NewsletterSignupForm: React.FC = () => {
           onChange={noop}
         />
 
-        <SubscribeButton>Subscribe</SubscribeButton>
+        <SubscribeButton>購読する</SubscribeButton>
       </Form>
     </Wrapper>
   );

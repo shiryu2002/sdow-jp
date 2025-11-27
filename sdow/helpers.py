@@ -5,7 +5,7 @@ Helper classes and methods.
 import requests
 
 
-WIKIPEDIA_API_URL = 'https://en.wikipedia.org/w/api.php'
+WIKIPEDIA_API_URL = 'https://ja.wikipedia.org/w/api.php'
 
 
 def fetch_wikipedia_pages_info(page_ids, database):
@@ -69,7 +69,7 @@ def fetch_wikipedia_pages_info(page_ids, database):
         pages_info[page_id] = {
             'id': page_id,
             'title': page_title,
-            'url': 'https://en.wikipedia.org/wiki/{0}'.format(page_title)
+            'url': 'https://ja.wikipedia.org/wiki/{0}'.format(page_title)
         }
       else:
         pages_info[page_id] = {
