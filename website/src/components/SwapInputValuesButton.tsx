@@ -40,7 +40,7 @@ export const SwapInputValuesButton: React.FC<{
   readonly onClick: React.MouseEventHandler;
 }> = ({canSwap, onClick}) => {
   if (!canSwap) {
-    return <P>から</P>;
+    return <P>→</P>;
   }
 
   return (
